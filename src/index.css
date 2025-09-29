@@ -20,8 +20,10 @@ All colors MUST be HSL.
     --primary: 41 98% 56%;
     --primary-foreground: 0 0% 10%;
 
-    --secondary: 16 100% 60%;
+    --secondary: 254 48% 50%;
     --secondary-foreground: 0 0% 98%;
+
+    --secondary-dark: 254 48% 35%;
 
     --success: 142 76% 39%;
     --success-foreground: 0 0% 98%;
@@ -42,6 +44,7 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     --gradient-radial: radial-gradient(circle at center, hsl(41 98% 56% / 0.15) 0%, transparent 70%);
+    --gradient-purple: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary-dark)) 100%);
   }
 }
 
