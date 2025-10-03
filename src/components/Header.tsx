@@ -22,19 +22,19 @@ export const Header = () => {
         <nav className="hidden md:flex items-center gap-8">
           <button
             onClick={() => scrollToSection("depoimentos")}
-            className="text-foreground hover:text-primary transition-colors font-medium"
+            className="text-foreground hover:text-primary transition-colors font-bold tracking-tighter"
           >
             Depoimentos
           </button>
           <button
             onClick={() => scrollToSection("clientes")}
-            className="text-foreground hover:text-primary transition-colors font-medium"
+            className="text-foreground hover:text-primary transition-colors font-bold tracking-tighter"
           >
             Clientes
           </button>
           <button
             onClick={() => scrollToSection("estrutura")}
-            className="text-foreground hover:text-primary transition-colors font-medium"
+            className="text-foreground hover:text-primary transition-colors font-bold tracking-tighter"
           >
             Sobre a Alpha
           </button>

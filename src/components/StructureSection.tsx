@@ -1,32 +1,26 @@
 export const StructureSection = () => {
   return (
-    <section id="estrutura" className="py-20 bg-muted/30">
+    <section id="estrutura" className="py-20 bg-muted/20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-4">
-            <span className="text-primary font-bold text-sm uppercase tracking-wider">
-              Estrutura
-            </span>
-          </div>
           
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">
+          <h2 className="text-4xl md:text-5xl font-regular text-center mb-4 tracking-tighter">
             Nada de empresa virtual!
           </h2>
           
-          <p className="text-xl text-primary text-center mb-12 font-medium">
+          <p className="text-xl text-white/30 text-center mb-12 font-regular tracking-tighter">
             (ou Home-Office)
           </p>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <p className="text-xl leading-relaxed">
-                A Alpha é uma empresa{" "}
+              <p className="text-4xl  font-regular tracking-tighter">
+                A Okto é uma empresa{" "}
                 <span className="text-primary font-bold">100% presencial</span>{" "}
-                com uma estrutura de ponta e mais de{" "}
-                <span className="text-primary font-bold">80 profissionais</span>.
+                com uma estrutura de ponta.
               </p>
               
-              <p className="text-muted-foreground text-lg">
+              <p className="text-muted-foreground text-lg font-light tracking-tight">
                 Nossa equipe trabalha em um ambiente colaborativo, permitindo
                 maior sinergia e resultados ainda mais expressivos para nossos
                 clientes.

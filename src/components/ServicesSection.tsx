@@ -12,28 +12,29 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
-            <div className="inline-block px-4 py-2 rounded-full border-2 border-primary">
-              <span className="text-primary font-bold">O que faremos?</span>
+    <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto">
+          <div className="mb-6 sm:mb-8">
+            <div className="inline-block border border-[#282828] px-6 sm:px-9 py-2 sm:py-3 rounded-full bg-[#131313]">
+              <span className="text-white font-light text-xs sm:text-sm">O QUE FAREMOS?</span>
             </div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-black mb-12">
-            Entenda como podemos agregar ao seu restaurante!
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-regular mb-8 sm:mb-12 tracking-tighter">
+            Entenda como podemos agregar <span className="text-[#808080]">ao seu restaurante!</span>
           </h2>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {services.map((service, index) => (
-              <div key={index} className="flex items-start gap-4 group">
-                <div className="flex-shrink-0 mt-1">
-                  <Star className="w-6 h-6 text-primary fill-primary group-hover:scale-110 transition-transform" />
+              <div key={index} className="group relative">
+                <div className="flex items-start gap-4">
+                  <p className="ml-3 text-lg sm:text-xl text-[#676767] group-hover:text-white transition-all duration-300 font-light tracking-tight group-hover:translate-x-2">
+                    {service}
+                  </p>
                 </div>
-                <p className="text-xl text-foreground group-hover:text-primary transition-colors">
-                  {service}
-                </p>
+                {/* Retângulo lateral esquerdo no hover */}
+                <div className=" absolute left-0 top-0 bottom-0 w-1 bg-primary/80 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-y-0 group-hover:scale-y-100 origin-center"></div>
               </div>
             ))}
           </div>

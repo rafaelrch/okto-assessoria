@@ -1,10 +1,6 @@
-import { Button } from "@/components/ui/button";
+import AnimatedTestimonialsDemo from "@/components/ui/animated-testimonials-demo";
 
-const testimonials = [
-  { id: 1, title: "Depoimento Cliente 1" },
-  { id: 2, title: "Depoimento Cliente 2" },
-  { id: 3, title: "Depoimento Cliente 3" },
-];
+// Array de testimonials removido - agora usando AnimatedTestimonials
 
 export const TestimonialsSection = () => {
   const scrollToForm = () => {
@@ -15,39 +11,30 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section id="depoimentos" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="depoimentos" className="py-12 sm:py-16 lg:py-20 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block px-4 py-2 rounded-full border-2 border-primary mb-4">
-              <span className="text-primary font-bold">Depoimentos</span>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-block border border-[#282828] px-6 sm:px-9 py-2 sm:py-3 rounded-full bg-[#131313] mb-4">
+              <span className="text-white font-light text-xs sm:text-sm">DEPOIMENTOS</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black">
-              Os nossos clientes falam por nós
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-regular tracking-tighter">
+            Os <span className="text-[#808080]">nossos clientes</span> falam por nós
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="aspect-video rounded-xl overflow-hidden shadow-xl bg-muted hover:shadow-2xl transition-shadow"
-              >
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title={testimonial.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            ))}
+          {/* Componente AnimatedTestimonials */}
+          <div className="mb-8 sm:mb-12">
+            <AnimatedTestimonialsDemo />
           </div>
 
           <div className="text-center">
-            <Button variant="secondary" size="lg" onClick={scrollToForm}>
-              Seja mais um Case de Sucesso
-            </Button>
+            <button 
+              onClick={scrollToForm}
+              className="text-primary-foreground font-light px-8 sm:px-10 py-3 rounded-full bg-[#5340bf] hover:bg-[#5340bf]/90 transition-ease-in-out duration-500 hover:[box-shadow:0_0_30px_0_rgba(48,14,255,0.4)] text-xs sm:text-sm"
+            >
+              SEJA MAIS UM CASE DE SUCESSO
+            </button>
           </div>
         </div>
       </div>
