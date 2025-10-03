@@ -33,7 +33,16 @@ export const Hero = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6 lg:space-y-8">
           {/* Seção de Confiança */}
-          <div className="inline-flex items-center gap-3 px-9 py-1  bg-black/20 border border-gray-700/30 rounded-full backdrop-blur-sm">
+          <motion.div 
+            className="inline-flex items-center gap-3 px-9 py-1  bg-black/20 border border-gray-700/30 rounded-full backdrop-blur-sm"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ 
+              duration: 0.4, 
+              delay: 0.6, // Delay menor que o botão para aparecer primeiro
+              ease: "easeOut" 
+            }}
+          >
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
                 <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5" fill="#FFD700" viewBox="0 0 20 20">
@@ -42,9 +51,9 @@ export const Hero = () => {
               ))}
             </div>
             <span className="text-sm sm:text-base text-gray-300 font-light tracking-tight">
-              Confiado por <span className="text-white font-medium">1.230 clientes satisfeitos</span>
+              Confiado por <span className="text-white font-medium">437 clientes satisfeitos</span>
             </span>
-          </div>
+          </motion.div>
 
           {/* Título */}
           <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-regular tracking-tighter text-white">

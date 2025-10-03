@@ -1,4 +1,6 @@
-import AnimatedTestimonialsDemo from "@/components/ui/animated-testimonials-demo";
+import { lazy, Suspense } from "react";
+
+const AnimatedTestimonialsDemo = lazy(() => import("@/components/ui/animated-testimonials-demo"));
 
 // Array de testimonials removido - agora usando AnimatedTestimonials
 
@@ -23,9 +25,15 @@ export const TestimonialsSection = () => {
             </h2>
           </div>
 
-          {/* Componente AnimatedTestimonials */}
+          {/* Componente AnimatedTestimonials com Lazy Loading */}
           <div className="mb-8 sm:mb-12">
-            <AnimatedTestimonialsDemo />
+            <Suspense fallback={
+              <div className="flex items-center justify-center h-80">
+                <div className="text-gray-400">Carregando depoimentos...</div>
+              </div>
+            }>
+              <AnimatedTestimonialsDemo />
+            </Suspense>
           </div>
 
           <div className="text-center">

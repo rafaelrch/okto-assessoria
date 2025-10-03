@@ -33,11 +33,16 @@ export const Footer = () => {
         {/* Barra inferior */}
         <div className="border-t border-gray-800">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2 sm:gap-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-2 sm:gap-4">
               
               {/* Copyright */}
               <p className="text-gray-400 text-xs sm:text-sm font-light tracking-tight text-center">
                 © 2025 OKTO ASSESSORIA
+              </p>
+
+              {/* Desenvolvido por */}
+              <p className="text-gray-400 text-xs sm:text-sm font-light text-center">
+                Desenvolvido por <a href="https://thize.io/" target="_blank" rel="noopener noreferrer" className="text-white font-bold hover:text-[#8ef100] transition-colors duration-200"><span className="text-white font-bold">thize</span><span className="text-[#8ef100] font-bold">.io</span></a>
               </p>
 
             </div>

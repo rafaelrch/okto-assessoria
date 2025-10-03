@@ -31,7 +31,7 @@ function createBeam(width: number, height: number): Beam {
         width: 30 + Math.random() * 60,
         length: height * 2.5,
         angle: angle,
-        speed: 0.6 + Math.random() * 1.2,
+        speed: 0.3 + Math.random() * 0.6, // Reduzido pela metade
         opacity: 0.18 + Math.random() * 0.22,
         hue: 240 + Math.random() * 30,
         pulse: Math.random() * Math.PI * 2,
@@ -47,7 +47,7 @@ export function BeamsBackground({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const beamsRef = useRef<Beam[]>([]);
     const animationFrameRef = useRef<number>(0);
-    const MINIMUM_BEAMS = 20;
+    const MINIMUM_BEAMS = 8; // Reduzido de 20 para 8
 
     const opacityMap = {
         subtle: 0.7,
@@ -70,7 +70,7 @@ export function BeamsBackground({
             canvas.style.height = `${window.innerHeight}px`;
             ctx.scale(dpr, dpr);
 
-            const totalBeams = MINIMUM_BEAMS * 1.5;
+            const totalBeams = MINIMUM_BEAMS; // Removido multiplicador 1.5
             beamsRef.current = Array.from({ length: totalBeams }, () =>
                 createBeam(canvas.width, canvas.height)
             );
