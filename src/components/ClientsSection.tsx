@@ -1,22 +1,12 @@
 // Removido imports do carousel shadcn
 
-const clients = [
-  "Lavi",
-  "InBox",
-  "Nonno Peppe",
-  "Peds",
-  "Felici",
-  "Dog King",
-  "Sabor Prime",
-  "Casa Italiana",
-  "Bella Vista",
-  "Taste of Italy",
-  "Golden Spoon",
-  "Chef's Corner",
-];
+// Lista de logos dos clientes localizados em /public (removendo o cliente-7.png)
+const clientLogos = Array.from({ length: 10 }, (_, i) => i + 1)
+  .filter((n) => n !== 7)
+  .map((n) => `/cliente-${n}.png`);
 
 // Duplicar os clientes para criar um loop infinito suave
-const duplicatedClients = [...clients, ...clients, ...clients];
+const duplicatedClients = [...clientLogos, ...clientLogos, ...clientLogos];
 
 export const ClientsSection = () => {
   return (
@@ -40,15 +30,19 @@ export const ClientsSection = () => {
           <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
           
           <div className="flex animate-scroll">
-            {duplicatedClients.map((client, index) => (
+            {duplicatedClients.map((logoSrc, index) => (
               <div 
                 key={index} 
                 className="flex-shrink-0 w-48 sm:w-56 md:w-64 mx-2 sm:mx-4"
               >
-                <div className="bg-card rounded-xl h-24 sm:h-28 md:h-32 flex items-center justify-center border border-border hover:border-primary transition-colors">
-                  <span className="text-lg sm:text-xl md:text-2xl font-regular text-white/20 tracking-tighter">
-                    {client}
-                  </span>
+                <div className="bg-white rounded-xl h-24 sm:h-28 md:h-32 flex items-center justify-center border border-border hover:border-primary transition-colors">
+                  <img
+                    src={logoSrc}
+                    alt={`Logo de cliente`}
+                    className="max-h-16 sm:max-h-20 md:max-h-24 w-auto object-contain opacity-80"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
             ))}
