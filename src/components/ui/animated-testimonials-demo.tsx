@@ -12,7 +12,7 @@ export default function AnimatedTestimonialsDemo() {
       quote: "Equipe extremamente profissional. Crescemos mês após mês com consistência.",
       name: "Depoimento 2",
       designation: "Cliente Okto",
-      src: "/depoimento 2.jpeg",
+      src: "/ted.png",
     },
     {
       quote: "Os números falam por si. A melhor decisão que tomamos este ano.",

@@ -11,6 +11,8 @@ import {
 import { FileText, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { submitToGoogleSheets } from "@/lib/googleSheets";
+import { trackLead } from "@/lib/metaPixel";
 
 export const FormSection = () => {
   const [formData, setFormData] = useState({
@@ -22,10 +24,46 @@ export const FormSection = () => {
     investment: "",
     revenue: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Formulário enviado! Entraremos em contato em breve.");
+    setIsSubmitting(true);
+
+    try {
+      await submitToGoogleSheets(formData);
+      
+      // Track Lead event in Meta Pixel
+      await trackLead(
+        {
+          email: formData.email,
+          phone: formData.phone,
+          name: formData.name,
+        },
+        {
+          company: formData.company,
+          investment: formData.investment,
+          revenue: formData.revenue,
+        }
+      );
+      
+      toast.success("Formulário enviado! Entraremos em contato em breve.");
+      // Limpar formulário após envio bem-sucedido
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        cnpj: "",
+        company: "",
+        investment: "",
+        revenue: "",
+      });
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast.error("Erro ao enviar formulário. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -190,8 +228,14 @@ export const FormSection = () => {
                 </Select>
               </div>
 
-              <Button type="submit" variant="secondary" size="lg" className="w-full">
-                Receber mais informações
+              <Button 
+                type="submit" 
+                variant="secondary" 
+                size="lg" 
+                className="w-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Enviando..." : "Receber mais informações"}
               </Button>
             </form>
           </div>

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import { TextEffect } from "@/components/ui/text-effect";
+import { submitToGoogleSheets } from "@/lib/googleSheets";
+import { trackLead } from "@/lib/metaPixel";
+import { toast } from "sonner";
 
 export const Hero = () => {
   const [formData, setFormData] = useState({
@@ -13,11 +16,46 @@ export const Hero = () => {
     investment: "",
     revenue: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulário enviado:", formData);
-    alert("Formulário enviado! Entraremos em contato em breve.");
+    setIsSubmitting(true);
+
+    try {
+      await submitToGoogleSheets(formData);
+      
+      // Track Lead event in Meta Pixel
+      await trackLead(
+        {
+          email: formData.email,
+          phone: formData.phone,
+          name: formData.name,
+        },
+        {
+          company: formData.company,
+          investment: formData.investment,
+          revenue: formData.revenue,
+        }
+      );
+      
+      toast.success("Formulário enviado! Entraremos em contato em breve.");
+      // Limpar formulário após envio bem-sucedido
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        cnpj: "",
+        company: "",
+        investment: "",
+        revenue: "",
+      });
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast.error("Erro ao enviar formulário. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToForm = () => {
@@ -267,9 +305,10 @@ export const Hero = () => {
 
                     <button 
                       type="submit" 
-                      className="w-full p-4 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-light rounded-full transition-colors text-SM"
+                      disabled={isSubmitting}
+                      className="w-full p-4 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-light rounded-full transition-colors text-SM disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      RECEBER MAIS INFORMAÇÕES
+                      {isSubmitting ? "ENVIANDO..." : "RECEBER MAIS INFORMAÇÕES"}
                     </button>
                   </form>
                 </div>
