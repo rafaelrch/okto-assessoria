@@ -142,7 +142,7 @@ export const FormSection = () => {
                 <Label htmlFor="phone">Telefone</Label>
                 <Input
                   id="phone"
-                  placeholder="(00) 00000-0000"
+                  placeholder=" (DDD) + Telefone"
                   value={formData.phone}
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })

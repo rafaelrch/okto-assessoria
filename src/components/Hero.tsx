@@ -233,7 +233,7 @@ export const Hero = () => {
 
                     <input
                       type="tel"
-                      placeholder="Telefone"
+                      placeholder=" (DDD) + Telefone"
                       value={formData.phone}
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
